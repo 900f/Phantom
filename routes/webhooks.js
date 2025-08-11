@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1396425005125865514/1EWG8t5RVk85RTomtN3nlZHYe0Q5eveduj06-3kOvKibI4A3ZQXPo0_K0teFzjjj8Ksd';
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1404603666467524699/mLTpSP1YoAq5ypeg3RpavmW-i2Z3zNPOIy3M2hNlJJrsEQAJbV7Y2c_S-zu-ZkxdRjXu';
 
 router.post('/order', async (req, res) => {
     try {
@@ -33,5 +33,6 @@ router.post('/order', async (req, res) => {
         res.status(500).json({ success: false, error: 'Failed to send webhook' });
     }
 });
+
 
 module.exports = router;
