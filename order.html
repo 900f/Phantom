@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Place Order - Phantom Services</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>👻 Phantom Services</h1>
+            </div>
+            <nav class="nav-menu">
+                <!-- Other navigation links can remain here -->
+            </nav>
+            <a href="/" class="btn btn-secondary back-to-home">← Back to Home</a>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container order-container">
+            <div class="order-form">
+                <h2 class="section-title">Place Your Order</h2>
+                <form id="order-form">
+                    <div class="form-step">
+                        <h3>1. Select Your Ranks</h3>
+                        <div class="form-group">
+                            <label for="current-rank">Current Rank</label>
+                            <select id="current-rank" required>
+                                <option value="" disabled selected>Select Current Rank</option>
+                                <option value="Bronze">🥉 Bronze</option>
+                                <option value="Silver">🥈 Silver</option>
+                                <option value="Gold">🥇 Gold</option>
+                                <option value="Platinum">💎 Platinum</option>
+                                <option value="Emerald">🌿 Emerald</option>
+                                <option value="Diamond">🔷 Diamond</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="desired-rank">Desired Rank</label>
+                            <select id="desired-rank" required>
+                                <option value="" disabled selected>Select Desired Rank</option>
+                                <option value="Champion">🏆 Champion</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <h3>2. Select Your Booster</h3>
+                        <div class="form-group">
+                            <label for="booster">Choose Your Booster</label>
+                            <select id="booster" required>
+                                <option value="" disabled selected>Select a Booster</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <h3>3. Account Information</h3>
+                        <div class="form-group">
+                            <label for="username">R6 Username</label>
+                            <input type="text" id="username" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="discord">Discord Username</label>
+                            <input type="text" id="discord" required />
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <h3>4. Priority & Payment</h3>
+                        <div class="form-group">
+                            <label class="terms-checkbox">
+                                <input type="checkbox" id="priority" />
+                                Priority Order (+£5)
+                                <span>Get your boost started faster</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h4>💳 Payment Instructions</h4>
+                            <p>Please send your payment to:</p>
+                            <p>
+                                <a href="https://www.paypal.me/loganltj" target="_blank"
+                                    >https://www.paypal.me/loganltj</a
+                                >
+                            </p>
+                            <p>Be sure to select "Send to Family and Friends" to avoid fees.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoice-id">Enter Your PayPal Invoice ID</label>
+                            <input type="text" id="invoice-id" required />
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <div class="disclaimer">
+                            <h4>⚠️ Important Terms</h4>
+                            <ul>
+                                <li>All boosts are Duo Queue — we do not log into your account.</li>
+                                <li>No refunds under any circumstances.</li>
+                                <li>We are not responsible for anything that happens to your account.</li>
+                                <li>Payment is processed immediately upon order confirmation.</li>
+                                <li>Boost typically takes 3-4 days to complete.</li>
+                            </ul>
+                            <label class="terms-checkbox">
+                                <input type="checkbox" id="terms" required />
+                                I agree to the terms and conditions
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-large btn-primary" onclick="console.log('Place Order button clicked')">
+                        Place Order
+                    </button>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-item">
+                    <span>Service:</span>
+                    <span id="summary-service">Select ranks first</span>
+                </div>
+                <div class="summary-item">
+                    <span>Base Price:</span>
+                    <span id="summary-base-price">£0</span>
+                </div>
+                <div class="summary-item">
+                    <span>Priority Order:</span>
+                    <span id="summary-priority">£0</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="summary-total">£0</span>
+                </div>
+            </div>
+
+            <!-- Added boosters list container here -->
+            <div class="boosters-list-container" style="margin-top: 30px;">
+                <h3>Boosters Status</h3>
+                <div id="boosters-list" style="margin-top: 10px; border: 1px solid #444; padding: 10px; border-radius: 6px; max-height: 300px; overflow-y: auto; background: #111; color: #eee;">
+                    <!-- Booster list will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="success-modal" style="display:none; align-items:center; justify-content:center; position:fixed; inset:0; background: rgba(0,0,0,0.8);">
+        <div
+          class="modal-content"
+          style="background:#222; padding:20px; border-radius:5px; max-width:400px; text-align:center;"
+        >
+            <h2>✅ Order Placed Successfully!</h2>
+            <p>Your order has been submitted and our team has been notified.</p>
+            <p>Order ID: <span id="order-id"></span></p>
+            <p>
+                To start your boosting, you must join our Discord server and a staff member will
+                contact you soon:
+            </p>
+            <a
+              id="discord-link"
+              href="#"
+              target="_blank"
+              class="btn btn-primary"
+              style="display:inline-block; margin: 10px 0; padding:10px 20px; background:#6755f0; color:#fff; text-decoration:none; border-radius:4px;"
+              >Join Discord</a
+            >
+            <br />
+            <button
+              class="btn btn-secondary"
+              onclick="document.getElementById('success-modal').style.display='none'"
+              style="padding:10px 20px; margin-top:10px; cursor:pointer;"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
