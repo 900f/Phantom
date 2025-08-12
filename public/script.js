@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
         reconnectionDelay: 1000
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    });
+
     socket.on('connect', () => {
         console.log('Socket connected:', socket.id);
     });
